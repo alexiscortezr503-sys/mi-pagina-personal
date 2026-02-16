@@ -3,723 +3,363 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALEXIS | Full Stack Developer & Tech Specialist</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>ALEXIS | Full Stack Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Rajdhani:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --dark:   #02020d;
-  --cyan:   #00f5ff;
-  --purple: #6366f1;
-  --pink:   #ec4899;
-  --orange: #f59e0b;
-  --green:  #10b981;
-  --white:  #f8fafc;
-  --muted:  rgba(248,250,252,0.48);
-  --card:   rgba(255,255,255,0.04);
-  --border: rgba(255,255,255,0.09);
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-
-body{
-  font-family:'Rajdhani',sans-serif;
-  background:var(--dark);
-  color:var(--white);
-  overflow-x:hidden;
-  background-image:
-    radial-gradient(ellipse 55% 45% at 5% 5%,  rgba(0,245,255,.06)   0%,transparent 70%),
-    radial-gradient(ellipse 50% 55% at 95% 95%, rgba(99,102,241,.08)  0%,transparent 70%),
-    radial-gradient(ellipse 40% 35% at 50% 50%, rgba(236,72,153,.04)  0%,transparent 70%);
-  background-attachment:fixed;
-}
-
-.stars{
-  position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:
-    radial-gradient(1px 1px at  8% 12%,rgba(255,255,255,.75) 0%,transparent 100%),
-    radial-gradient(1px 1px at 20% 55%,rgba(255,255,255,.50) 0%,transparent 100%),
-    radial-gradient(2px 2px at 35%  7%,rgba(255,255,255,.80) 0%,transparent 100%),
-    radial-gradient(1px 1px at 47% 72%,rgba(255,255,255,.40) 0%,transparent 100%),
-    radial-gradient(1px 1px at 58% 30%,rgba(255,255,255,.60) 0%,transparent 100%),
-    radial-gradient(2px 2px at 72% 85%,rgba(255,255,255,.70) 0%,transparent 100%),
-    radial-gradient(1px 1px at 83%  3%,rgba(255,255,255,.55) 0%,transparent 100%),
-    radial-gradient(1px 1px at 92% 45%,rgba(255,255,255,.45) 0%,transparent 100%),
-    radial-gradient(1px 1px at  3% 68%,rgba(255,255,255,.35) 0%,transparent 100%),
-    radial-gradient(1px 1px at 26% 90%,rgba(255,255,255,.30) 0%,transparent 100%),
-    radial-gradient(1px 1px at 63% 18%,rgba(0,245,255,.45)  0%,transparent 100%),
-    radial-gradient(1px 1px at 77% 62%,rgba(99,102,241,.50) 0%,transparent 100%);
-}
-
-.container{position:relative;z-index:2;min-height:100vh;padding:2.5rem 1.5rem;display:flex;flex-direction:column;align-items:center;}
-
-.nav-main{
-  width:100%;max-width:1400px;display:flex;justify-content:center;gap:1rem;
-  margin-bottom:3rem;flex-wrap:wrap;animation:fadeDown .6s ease;
-}
-@keyframes fadeDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
-
-.nav-link{
-  position:relative;display:inline-flex;align-items:center;gap:.5rem;
-  padding:.9rem 1.8rem;border-radius:12px;cursor:pointer;border:none;
-  background:var(--card);color:var(--white);
-  font-family:'Orbitron',sans-serif;font-size:.75rem;font-weight:700;
-  letter-spacing:2px;text-transform:uppercase;text-decoration:none;
-  transition:transform .25s ease, box-shadow .25s ease;
-}
-.nav-link::after{
-  content:'';position:absolute;inset:0;border-radius:12px;
-  border:1px solid rgba(0,245,255,.22);
-  transition:border-color .25s ease,box-shadow .25s ease;pointer-events:none;
-}
-.nav-link:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(0,0,0,.5);}
-.nav-link:hover::after{border-color:rgba(0,245,255,.65);box-shadow:inset 0 0 16px rgba(0,245,255,.06);}
-.nav-link.active{background:rgba(0,245,255,.08);}
-.nav-link.active::after{border-color:rgba(0,245,255,.5);}
-
-.section{display:none;width:100%;max-width:1400px;animation:fadeUp .6s ease;}
-.section.active{display:block;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-
-.hero{text-align:center;margin-bottom:2rem;}
-
-.avatar-section{position:relative;width:200px;height:200px;margin:0 auto 1.8rem;}
-
-.ring{
-  position:absolute;border-radius:50%;
-  border:2px solid transparent;
-  border-top-color:var(--cyan);
-  border-right-color:var(--purple);
-  animation:spin 9s linear infinite;
-}
-.ring-1{inset:-16px;}
-.ring-2{
-  inset:-28px;
-  border-top-color:transparent;
-  border-bottom-color:var(--pink);
-  border-left-color:var(--orange);
-  animation:spin 16s linear infinite reverse;
-  opacity:.45;
-}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-.avatar-box{
-  width:200px;height:200px;border-radius:50%;overflow:hidden;
-  border:3px solid rgba(0,245,255,.5);
-  box-shadow:0 0 36px rgba(0,245,255,.35),0 0 70px rgba(99,102,241,.18);
-  position:relative;z-index:2;
-}
-.avatar{width:100%;height:100%;object-fit:cover;object-position:center top;}
-
-.online-dot{
-  position:absolute;bottom:10px;right:10px;z-index:3;
-  width:13px;height:13px;border-radius:50%;
-  background:var(--green);box-shadow:0 0 8px var(--green);
-  border:2px solid var(--dark);
-}
-
-.main-title{
-  font-family:'Orbitron',sans-serif;font-size:clamp(2.6rem,6vw,5rem);font-weight:900;
-  background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  letter-spacing:4px;margin-bottom:.8rem;
-}
-
-.welcome-text{
-  font-size:1.4rem;color:var(--white);margin-bottom:1.2rem;
-  font-weight:600;letter-spacing:1px;
-}
-
-.rotating-role{
-  font-size:1.1rem;color:var(--cyan);letter-spacing:2px;
-  min-height:30px;margin-bottom:2rem;
-  font-family:'JetBrains Mono',monospace;
-}
-
-.cv-btn{
-  display:inline-flex;align-items:center;gap:.7rem;
-  padding:1rem 2rem;border-radius:100px;
-  background:linear-gradient(135deg,var(--cyan),var(--purple));
-  color:var(--dark);font-family:'Orbitron',sans-serif;
-  font-size:.85rem;font-weight:700;letter-spacing:2px;
-  text-decoration:none;border:none;cursor:pointer;
-  transition:transform .25s ease, box-shadow .25s ease;
-  margin-bottom:2rem;
-}
-.cv-btn:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 10px 35px rgba(0,245,255,.4);}
-
-.contact-wrap{width:100%;max-width:680px;margin:0 auto 2rem;text-align:center;}
-.contact-wrap h2{font-family:'Orbitron',sans-serif;font-size:.8rem;color:var(--cyan);letter-spacing:4px;text-transform:uppercase;margin-bottom:1.3rem;opacity:.65;}
-.contact-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
-
-.contact-btn{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:13px 22px;border-radius:100px;text-decoration:none;
-  font-size:13px;font-weight:600;letter-spacing:.03em;color:white;
-  transition:transform .22s ease, box-shadow .22s ease, opacity .22s ease;
-}
-.contact-btn:hover{transform:translateY(-3px) scale(1.03);opacity:.88;}
-.contact-btn svg{width:19px;height:19px;fill:currentColor;flex-shrink:0;}
-
-.btn-ig{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);box-shadow:0 7px 24px rgba(253,29,29,.28);}
-.btn-tt{background:#000;border:1px solid rgba(255,255,255,.18);box-shadow:0 7px 24px rgba(0,0,0,.45);}
-.btn-dc{background:#5865f2;box-shadow:0 7px 24px rgba(88,101,242,.38);}
-.btn-wa{background:#25d366;box-shadow:0 7px 24px rgba(37,211,102,.38);}
-
-.about-content{max-width:1000px;margin:0 auto;}
-.about-header{text-align:center;margin-bottom:3rem;}
-.about-name{
-  font-family:'Orbitron',sans-serif;font-size:2.5rem;font-weight:900;
-  background:linear-gradient(135deg,var(--cyan),var(--purple));
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  margin-bottom:1.5rem;
-}
-.about-intro{
-  font-size:1.05rem;line-height:1.8;color:var(--muted);
-  max-width:800px;margin:0 auto 2rem;
-}
-
-.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-bottom:2rem;}
-
-.info-card{
-  background:var(--card);border:1px solid var(--border);border-radius:16px;
-  padding:2rem;transition:transform .25s ease,border-color .25s ease;
-}
-.info-card:hover{transform:translateY(-4px);border-color:rgba(0,245,255,.3);}
-.info-card h3{
-  font-family:'Orbitron',sans-serif;font-size:1.1rem;color:var(--cyan);
-  margin-bottom:1.2rem;letter-spacing:2px;
-}
-.info-card p, .info-card ul{
-  font-size:.95rem;line-height:1.7;color:var(--muted);
-}
-.info-card ul{list-style:none;padding:0;}
-.info-card li{margin-bottom:.7rem;padding-left:1.5rem;position:relative;}
-.info-card li::before{
-  content:'▹';position:absolute;left:0;color:var(--cyan);
-}
-
-.tech-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
-  gap:1rem;margin-top:1.5rem;
-}
-.tech-item{
-  background:var(--card);border:1px solid var(--border);border-radius:12px;
-  padding:1rem;text-align:center;
-  transition:transform .22s ease,border-color .22s ease;
-}
-.tech-item:hover{transform:translateY(-3px);border-color:rgba(0,245,255,.4);}
-.tech-logo{width:40px;height:40px;object-fit:contain;margin:0 auto .5rem;display:block;}
-.tech-name{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--cyan);letter-spacing:1px;}
-
-.projects-content{max-width:1200px;margin:0 auto;}
-.section-title{
-  font-family:'Orbitron',sans-serif;font-size:2rem;font-weight:900;
-  text-align:center;color:var(--cyan);margin-bottom:2rem;
-  letter-spacing:3px;
-}
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2rem;}
-
-.project-card{
-  background:var(--card);border:1px solid var(--border);border-radius:16px;
-  overflow:hidden;transition:transform .25s ease,border-color .25s ease;
-}
-.project-card:hover{transform:translateY(-4px);border-color:rgba(0,245,255,.4);}
-.project-media{
-  height:200px;background:rgba(0,245,255,.05);display:flex;align-items:center;
-  justify-content:center;border-bottom:1px solid var(--border);
-  position:relative;overflow:hidden;
-}
-.project-media img, .project-media video{width:100%;height:100%;object-fit:cover;}
-.project-placeholder{
-  font-size:3rem;opacity:.3;
-}
-.project-info{padding:1.5rem;}
-.project-title{
-  font-family:'Orbitron',sans-serif;font-size:1.1rem;color:var(--cyan);
-  margin-bottom:.8rem;letter-spacing:1.5px;
-}
-.project-desc{font-size:.9rem;line-height:1.6;color:var(--muted);margin-bottom:1rem;}
-.project-tags{display:flex;gap:.5rem;flex-wrap:wrap;}
-.project-tag{
-  padding:.3rem .8rem;background:rgba(0,245,255,.1);
-  border:1px solid rgba(0,245,255,.2);border-radius:6px;
-  font-family:'JetBrains Mono',monospace;font-size:.65rem;
-  color:var(--cyan);letter-spacing:.5px;
-}
-
-.services-content{max-width:1200px;margin:0 auto;}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem;}
-
-.service-card{
-  background:var(--card);border:1px solid var(--border);border-radius:18px;
-  padding:2rem;position:relative;overflow:hidden;
-  transition:transform .25s ease,box-shadow .25s ease;
-}
-.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
-.service-card:nth-child(1)::before{background:linear-gradient(90deg,var(--cyan),transparent);}
-.service-card:nth-child(2)::before{background:linear-gradient(90deg,var(--purple),transparent);}
-.service-card:nth-child(3)::before{background:linear-gradient(90deg,var(--pink),transparent);}
-.service-card:nth-child(4)::before{background:linear-gradient(90deg,var(--orange),transparent);}
-.service-card:nth-child(5)::before{background:linear-gradient(90deg,var(--green),transparent);}
-.service-card:hover{transform:translateY(-4px);box-shadow:0 14px 45px rgba(0,0,0,.5);}
-
-.service-icon{font-size:2.5rem;margin-bottom:1rem;display:block;}
-.service-title{
-  font-family:'Orbitron',sans-serif;font-size:1.1rem;color:var(--cyan);
-  margin-bottom:1rem;letter-spacing:1.5px;
-}
-.service-desc{font-size:.95rem;line-height:1.7;color:var(--muted);margin-bottom:1.2rem;}
-.service-list{list-style:none;padding:0;}
-.service-list li{
-  font-size:.88rem;color:var(--muted);margin-bottom:.5rem;
-  padding-left:1.2rem;position:relative;
-}
-.service-list li::before{
-  content:'✓';position:absolute;left:0;color:var(--green);
-}
-
-.in-training{
-  display:inline-flex;align-items:center;gap:.5rem;
-  padding:.5rem 1rem;background:rgba(245,158,11,.1);
-  border:1px solid rgba(245,158,11,.3);border-radius:8px;
-  font-family:'JetBrains Mono',monospace;font-size:.75rem;
-  color:var(--orange);letter-spacing:1px;margin-top:1rem;
-}
-
-.footer{width:100%;padding:1.4rem 0;border-top:1px solid rgba(0,245,255,.1);text-align:center;margin-top:3rem;}
-.footer p{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:rgba(0,245,255,.35);letter-spacing:3px;}
-
-@media(max-width:720px){
-  .nav-main{gap:.6rem;}
-  .nav-link{padding:.7rem 1.2rem;font-size:.65rem;}
-  .info-grid{grid-template-columns:1fr;}
-  .tech-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));}
-  .projects-grid{grid-template-columns:1fr;}
-  .services-grid{grid-template-columns:1fr;}
-}
+:root{--dark:#0a0a0f;--blood:#dc2626;--crimson:#991b1b;--gold:#d97706;--white:#f8fafc;--muted:rgba(248,250,252,0.48);--card:rgba(255,255,255,0.03);--border:rgba(220,38,38,0.15)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Rajdhani',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden;background-image:radial-gradient(ellipse 50% 40% at 10% 10%,rgba(220,38,38,.08) 0%,transparent 60%),radial-gradient(ellipse 45% 50% at 90% 90%,rgba(153,27,27,.06) 0%,transparent 60%);background-attachment:fixed}
+.particles{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(1px 1px at 15% 25%,rgba(220,38,38,.4) 0%,transparent 100%),radial-gradient(1px 1px at 85% 15%,rgba(217,119,6,.3) 0%,transparent 100%),radial-gradient(2px 2px at 25% 75%,rgba(153,27,27,.5) 0%,transparent 100%)}
+.container{position:relative;z-index:2;min-height:100vh;padding:2.5rem 1.5rem;display:flex;flex-direction:column;align-items:center}
+.nav-main{width:100%;max-width:1400px;display:flex;justify-content:center;gap:1rem;margin-bottom:3rem;flex-wrap:wrap;animation:fadeDown .6s ease}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1}}
+.nav-link{position:relative;display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.8rem;border-radius:8px;cursor:pointer;border:none;background:var(--card);color:var(--white);font-family:'Cinzel',serif;font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .25s}
+.nav-link::after{content:'';position:absolute;inset:0;border-radius:8px;border:1px solid rgba(220,38,38,.3);transition:all .25s;pointer-events:none}
+.nav-link:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(220,38,38,.3)}
+.nav-link:hover::after{border-color:rgba(220,38,38,.8);box-shadow:inset 0 0 20px rgba(220,38,38,.1)}
+.nav-link.active{background:rgba(220,38,38,.15)}
+.nav-link.active::after{border-color:rgba(220,38,38,.6)}
+.section{display:none;width:100%;max-width:1400px;animation:fadeUp .6s ease}
+.section.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1}}
+.hero{text-align:center;margin-bottom:2rem}
+.avatar-section{position:relative;width:200px;height:200px;margin:0 auto 1.8rem}
+.blood-ring{position:absolute;border-radius:50%;filter:blur(1px);animation:liquidFlow 8s ease-in-out infinite}
+.blood-ring-1{inset:-16px;background:linear-gradient(45deg,transparent 0%,rgba(220,38,38,.6) 25%,rgba(153,27,27,.8) 50%,rgba(220,38,38,.6) 75%,transparent 100%);animation:liquidFlow 8s ease-in-out infinite,rotate 15s linear infinite}
+.blood-ring-2{inset:-28px;background:linear-gradient(135deg,transparent 0%,rgba(217,119,6,.5) 20%,rgba(220,38,38,.7) 40%,rgba(153,27,27,.5) 60%,rgba(217,119,6,.5) 80%,transparent 100%);animation:liquidFlow 10s ease-in-out infinite reverse,rotate 20s linear infinite reverse;opacity:.7}
+@keyframes liquidFlow{0%,100%{border-radius:50% 48% 52% 50%/48% 50% 50% 52%}25%{border-radius:48% 52% 50% 50%/52% 48% 52% 48%}50%{border-radius:52% 48% 48% 52%/50% 52% 48% 50%}75%{border-radius:50% 50% 52% 48%/48% 52% 50% 48%}}
+@keyframes rotate{to{transform:rotate(360deg)}}
+.avatar-box{width:200px;height:200px;border-radius:50%;overflow:hidden;border:3px solid rgba(220,38,38,.6);box-shadow:0 0 36px rgba(220,38,38,.4);position:relative;z-index:2}
+.avatar{width:100%;height:100%;object-fit:cover}
+.online-dot{position:absolute;bottom:10px;right:10px;z-index:3;width:13px;height:13px;border-radius:50%;background:var(--blood);box-shadow:0 0 8px var(--blood);border:2px solid var(--dark);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.1);opacity:.8}}
+.main-title{font-family:'Cinzel',serif;font-size:clamp(2.6rem,6vw,5rem);font-weight:900;background:linear-gradient(135deg,var(--blood),var(--gold),var(--crimson));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:4px;margin-bottom:.8rem}
+.welcome-text{font-size:1.4rem;color:var(--white);margin-bottom:1.2rem;font-weight:600;letter-spacing:1px;font-family:'Cinzel',serif}
+.rotating-role{font-size:1.1rem;color:var(--gold);letter-spacing:2px;min-height:30px;margin-bottom:2rem;font-family:'JetBrains Mono',monospace;transition:opacity .5s}
+.cv-btn{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 2rem;border-radius:8px;background:linear-gradient(135deg,var(--blood),var(--crimson));color:var(--white);font-family:'Cinzel',serif;font-size:.85rem;font-weight:700;letter-spacing:2px;text-decoration:none;border:none;cursor:pointer;transition:all .25s;margin-bottom:2rem;box-shadow:0 4px 15px rgba(220,38,38,.3)}
+.cv-btn:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 10px 35px rgba(220,38,38,.5)}
+.contact-wrap{width:100%;max-width:680px;margin:0 auto 2rem;text-align:center}
+.contact-wrap h2{font-family:'Cinzel',serif;font-size:.8rem;color:var(--gold);letter-spacing:4px;text-transform:uppercase;margin-bottom:1.3rem;opacity:.8}
+.contact-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.contact-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;color:white;transition:all .22s;border:1px solid rgba(255,255,255,.1)}
+.contact-btn:hover{transform:translateY(-3px) scale(1.03);opacity:.88}
+.contact-btn svg{width:19px;height:19px;fill:currentColor}
+.btn-ig{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);box-shadow:0 7px 24px rgba(253,29,29,.28)}
+.btn-tt{background:#000;box-shadow:0 7px 24px rgba(0,0,0,.45)}
+.btn-dc{background:#5865f2;box-shadow:0 7px 24px rgba(88,101,242,.38)}
+.btn-wa{background:linear-gradient(135deg,var(--blood),var(--crimson));box-shadow:0 7px 24px rgba(220,38,38,.38)}
+.about-content{max-width:1000px;margin:0 auto}
+.about-header{text-align:center;margin-bottom:3rem}
+.about-name{font-family:'Cinzel',serif;font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--blood),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1.5rem}
+.about-intro{font-size:1.05rem;line-height:1.8;color:var(--muted);max-width:800px;margin:0 auto 2rem}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-bottom:2rem}
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:2rem;transition:all .25s;box-shadow:0 4px 15px rgba(0,0,0,.2)}
+.info-card:hover{transform:translateY(-4px);border-color:rgba(220,38,38,.4);box-shadow:0 8px 25px rgba(220,38,38,.2)}
+.info-card h3{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold);margin-bottom:1.2rem;letter-spacing:2px}
+.info-card p,.info-card ul{font-size:.95rem;line-height:1.7;color:var(--muted)}
+.info-card ul{list-style:none;padding:0}
+.info-card li{margin-bottom:.7rem;padding-left:1.5rem;position:relative}
+.info-card li::before{content:'▸';position:absolute;left:0;color:var(--blood)}
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:1rem;margin-top:1.5rem}
+.tech-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center;transition:all .22s}
+.tech-item:hover{transform:translateY(-3px);border-color:rgba(220,38,38,.5);box-shadow:0 5px 15px rgba(220,38,38,.2)}
+.tech-logo{width:40px;height:40px;object-fit:contain;margin:0 auto .5rem;display:block}
+.tech-name{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--gold);letter-spacing:1px}
+.projects-content,.services-content{max-width:1200px;margin:0 auto}
+.section-title{font-family:'Cinzel',serif;font-size:2rem;font-weight:900;text-align:center;color:var(--gold);margin-bottom:2rem;letter-spacing:3px}
+.projects-grid,.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem}
+.project-card,.service-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .25s;padding:0}
+.project-card:hover,.service-card:hover{transform:translateY(-4px);border-color:rgba(220,38,38,.5);box-shadow:0 8px 25px rgba(220,38,38,.2)}
+.project-media{height:200px;background:rgba(220,38,38,.05);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border)}
+.project-placeholder{font-size:3rem;opacity:.3}
+.project-info{padding:1.5rem}
+.project-title,.service-title{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold);margin-bottom:.8rem;letter-spacing:1.5px}
+.project-desc,.service-desc{font-size:.9rem;line-height:1.6;color:var(--muted);margin-bottom:1rem}
+.project-tags{display:flex;gap:.5rem;flex-wrap:wrap}
+.project-tag{padding:.3rem .8rem;background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.3);border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--blood)}
+.service-card{padding:2rem;position:relative}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.service-card:nth-child(1)::before{background:linear-gradient(90deg,var(--blood),transparent)}
+.service-card:nth-child(2)::before{background:linear-gradient(90deg,var(--gold),transparent)}
+.service-card:nth-child(3)::before{background:linear-gradient(90deg,var(--crimson),transparent)}
+.service-card:nth-child(4)::before{background:linear-gradient(90deg,var(--blood),transparent)}
+.service-card:nth-child(5)::before{background:linear-gradient(90deg,var(--gold),transparent)}
+.service-icon{font-size:2.5rem;margin-bottom:1rem;display:block}
+.service-list{list-style:none;padding:0}
+.service-list li{font-size:.88rem;color:var(--muted);margin-bottom:.5rem;padding-left:1.2rem;position:relative}
+.service-list li::before{content:'✓';position:absolute;left:0;color:var(--blood)}
+.in-training{max-width:1200px;margin:2rem auto}
+.training-content{background:var(--card);border:1px solid rgba(217,119,6,.3);border-radius:12px;padding:2rem;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,.2)}
+.training-content h2{font-family:'Cinzel',serif;font-size:1.5rem;color:var(--gold);margin-bottom:1.5rem;letter-spacing:2px}
+.training-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}
+.training-item{background:rgba(217,119,6,.05);border:1px solid rgba(217,119,6,.2);border-radius:8px;padding:1rem;transition:all .22s}
+.training-item:hover{transform:translateY(-3px);border-color:rgba(217,119,6,.5);box-shadow:0 5px 15px rgba(217,119,6,.2)}
+.training-item h3{font-family:'Cinzel',serif;font-size:.9rem;color:var(--gold);margin-bottom:.5rem}
+.training-item p{font-size:.85rem;color:var(--muted)}
+.footer{width:100%;padding:1.4rem 0;border-top:1px solid rgba(220,38,38,.2);text-align:center;margin-top:3rem}
+.footer p{font-family:'Cinzel',serif;font-size:.72rem;color:rgba(220,38,38,.5);letter-spacing:3px}
+@media(max-width:720px){.nav-main{gap:.6rem}.nav-link{padding:.7rem 1.2rem;font-size:.65rem}.info-grid,.projects-grid,.services-grid,.training-grid{grid-template-columns:1fr}.tech-grid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr))}}
 </style>
 </head>
 <body>
-
-<div class="stars"></div>
-
+<div class="particles"></div>
 <div class="container">
+<nav class="nav-main">
+<a href="#inicio" class="nav-link active" onclick="showSection('inicio',this)">🏠 Inicio</a>
+<a href="#about" class="nav-link" onclick="showSection('about',this)">👤 Acerca de mí</a>
+<a href="#projects" class="nav-link" onclick="showSection('projects',this)">💼 Proyectos</a>
+<a href="#services" class="nav-link" onclick="showSection('services',this)">⚡ Servicios</a>
+<a href="#training" class="nav-link" onclick="showSection('training',this)">📚 En Formación</a>
+</nav>
 
-  <nav class="nav-main">
-    <a href="#inicio" class="nav-link active" onclick="showSection('inicio',this)">🏠 Inicio</a>
-    <a href="#about" class="nav-link" onclick="showSection('about',this)">👤 Acerca de mí</a>
-    <a href="#projects" class="nav-link" onclick="showSection('projects',this)">💼 Proyectos</a>
-    <a href="#services" class="nav-link" onclick="showSection('services',this)">⚡ Servicios</a>
-  </nav>
+<section id="inicio" class="section active">
+<div class="hero">
+<div class="avatar-section">
+<div class="blood-ring blood-ring-1"></div>
+<div class="blood-ring blood-ring-2"></div>
+<div class="avatar-box">
+<img src="https://i.imgur.com/placeholder.jpg" onerror="this.src='https://ui-avatars.com/api/?name=ALEXIS&size=200&background=dc2626&color=fff&bold=true&font-size=0.4'" alt="ALEXIS" class="avatar">
+</div>
+<div class="online-dot"></div>
+</div>
+<h1 class="main-title">ALEXIS</h1>
+<p class="welcome-text">HOLA, SOY ALEXIS</p>
+<div class="rotating-role" id="rotating-role"></div>
+<a href="#" class="cv-btn" onclick="alert('CV próximamente disponible');return false">📄 Descargar CV</a>
+</div>
+<div class="contact-wrap">
+<h2>📡 Canales de Contacto</h2>
+<div class="contact-row">
+<a href="https://instagram.com/mkoi.alex" class="contact-btn btn-ig" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram</a>
+<a href="https://tiktok.com/@alex__.zzz" class="contact-btn btn-tt" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>TikTok</a>
+<a href="https://discord.com/users/cortez_503" class="contact-btn btn-dc" target="_blank"><svg viewBox="0 0 24 24"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 00-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 00-5.487 0 12.36 12.36 0 00-.617-1.23A.077.077 0 008.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 00-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 00.031.055 20.03 20.03 0 005.993 2.98.078.078 0 00.084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 01-1.872-.878.075.075 0 01-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 01.078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 01.079.009c.12.098.245.195.372.288a.075.075 0 01-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 00-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 00.084.028 19.963 19.963 0 006.002-2.981.076.076 0 00.032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 00-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/></svg>Discord</a>
+<a href="https://wa.me/50373298700" class="contact-btn btn-wa" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Contacto</a>
+</div>
+</div>
+</section>
 
-  <section id="inicio" class="section active">
-    <div class="hero">
-      <div class="avatar-section">
-        <div class="ring ring-1"></div>
-        <div class="ring ring-2"></div>
-        <div class="avatar-box">
-          <img src="data:image/jpeg;base64,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" alt="ALEXIS" class="avatar">
-        </div>
-        <div class="online-dot"></div>
-      </div>
+<section id="about" class="section">
+<div class="about-content">
+<div class="about-header">
+<h1 class="about-name">WILLIAM ALEXIS GRANADOS CORTEZ</h1>
+<p class="about-intro">Estudiante de Platzi en Ciberseguridad, actualmente enfocado en Hacking Ético y Pentesting (Red Team). Apasionado de la programación, automatización, desarrollo web, ciencia de datos e inteligencia artificial. <strong>Tengo dos trastornos como lo son el TDAH y TLP</strong>, lo cual me ha dado una perspectiva única para enfrentar retos y desarrollar soluciones creativas.</p>
+</div>
+<div class="info-grid">
+<div class="info-card">
+<h3>🎓 EDUCACIÓN</h3>
+<ul>
+<li><strong>Instituto Nacional de Santa Ana (I.N.S.A)</strong></li>
+<li>Llegué hasta 2° de Ingeniería Electrónica</li>
+<li>No me titulé, pero decidí aprender lo que me faltaba por mi cuenta</li>
+<li>Actualmente sigo estudiando y certificándome en amplios temas tecnológicos</li>
+</ul>
+</div>
+<div class="info-card">
+<h3>💼 EXPERIENCIA</h3>
+<ul>
+<li>Moderación, automatización y programación para creador de contenido</li>
+<li>Proyectos personales de programación</li>
+<li>Proyectos de automatización y bots</li>
+<li>Proyectos de ciencia de datos</li>
+<li>Actualmente trabajando en múltiples proyectos (2026)</li>
+</ul>
+</div>
+</div>
+<div class="info-card">
+<h3>🛠️ HABILIDADES TÉCNICAS</h3>
+<div class="tech-grid">
+<div class="tech-item"><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"><div class="tech-name">HTML</div></div>
+<div class="tech-item"><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"><div class="tech-name">CSS</div></div>
+<div class="tech-item"><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"><div class="tech-name">Python</div></div>
+<div class="tech-item"><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"><div class="tech-name">JavaScript</div></div>
+<div class="tech-item"><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#"><div class="tech-name">C#</div></div>
+<div class="tech-item"><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt=".NET"><div class="tech-name">.NET</div></div>
+<div class="tech-item"><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP"><div class="tech-name">PHP</div></div>
+<div class="tech-item"><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg" alt="Go"><div class="tech-name">Go</div></div>
+<div class="tech-item"><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg" alt="Rust"><div class="tech-name">Rust</div></div>
+<div class="tech-item"><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg" alt="Swift"><div class="tech-name">Swift</div></div>
+<div class="tech-item"><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin"><div class="tech-name">Kotlin</div></div>
+<div class="tech-item"><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C"><div class="tech-name">C</div></div>
+<div class="tech-item"><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++"><div class="tech-name">C++</div></div>
+<div class="tech-item"><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript"><div class="tech-name">TypeScript</div></div>
+<div class="tech-item"><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"><div class="tech-name">Java</div></div>
+</div>
+</div>
+<div class="contact-wrap" style="margin-top:3rem">
+<h2>📡 Canales de Contacto</h2>
+<div class="contact-row">
+<a href="https://instagram.com/mkoi.alex" class="contact-btn btn-ig" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram</a>
+<a href="https://tiktok.com/@alex__.zzz" class="contact-btn btn-tt" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>TikTok</a>
+<a href="https://discord.com/users/cortez_503" class="contact-btn btn-dc" target="_blank"><svg viewBox="0 0 24 24"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 00-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 00-5.487 0 12.36 12.36 0 00-.617-1.23A.077.077 0 008.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 00-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 00.031.055 20.03 20.03 0 005.993 2.98.078.078 0 00.084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 01-1.872-.878.075.075 0 01-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 01.078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 01.079.009c.12.098.245.195.372.288a.075.075 0 01-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 00-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 00.084.028 19.963 19.963 0 006.002-2.981.076.076 0 00.032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 00-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/></svg>Discord</a>
+<a href="https://wa.me/50373298700" class="contact-btn btn-wa" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Contacto</a>
+</div>
+</div>
+</div>
+</section>
 
-      <h1 class="main-title">BIENVENIDO</h1>
-      <p class="welcome-text">HOLA, SOY ALEXIS</p>
-      <div class="rotating-role" id="rotating-role"></div>
+<section id="projects" class="section">
+<div class="projects-content">
+<h2 class="section-title">💼 MIS PROYECTOS</h2>
+<div class="projects-grid">
+<div class="project-card">
+<div class="project-media"><div class="project-placeholder">🤖</div></div>
+<div class="project-info">
+<h3 class="project-title">Bot de Automatización</h3>
+<p class="project-desc">Bot inteligente para automatización de tareas. Próximamente añadiré capturas y video demostrativo del funcionamiento.</p>
+<div class="project-tags">
+<span class="project-tag">Python</span>
+<span class="project-tag">Automatización</span>
+<span class="project-tag">Bot</span>
+</div>
+</div>
+</div>
+<div class="project-card">
+<div class="project-media"><div class="project-placeholder">📊</div></div>
+<div class="project-info">
+<h3 class="project-title">Análisis de Datos</h3>
+<p class="project-desc">Proyecto de ciencia de datos y visualización. Más detalles y capturas próximamente.</p>
+<div class="project-tags">
+<span class="project-tag">Python</span>
+<span class="project-tag">Data Science</span>
+<span class="project-tag">ML</span>
+</div>
+</div>
+</div>
+<div class="project-card" style="border-style:dashed;border-color:rgba(220,38,38,.3);background:transparent">
+<div class="project-media" style="background:rgba(220,38,38,.02)"><div class="project-placeholder" style="font-size:4rem">➕</div></div>
+<div class="project-info" style="text-align:center">
+<h3 class="project-title">Próximamente</h3>
+<p class="project-desc" style="font-style:italic;opacity:.7">Más proyectos en camino. Subiré videos y capturas de todos mis trabajos.</p>
+</div>
+</div>
+</div>
+<div class="contact-wrap" style="margin-top:3rem">
+<h2>📡 Canales de Contacto</h2>
+<div class="contact-row">
+<a href="https://instagram.com/mkoi.alex" class="contact-btn btn-ig" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram</a>
+<a href="https://tiktok.com/@alex__.zzz" class="contact-btn btn-tt" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>TikTok</a>
+<a href="https://discord.com/users/cortez_503" class="contact-btn btn-dc" target="_blank"><svg viewBox="0 0 24 24"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 00-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 00-5.487 0 12.36 12.36 0 00-.617-1.23A.077.077 0 008.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 00-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 00.031.055 20.03 20.03 0 005.993 2.98.078.078 0 00.084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 01-1.872-.878.075.075 0 01-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 01.078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 01.079.009c.12.098.245.195.372.288a.075.075 0 01-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 00-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 00.084.028 19.963 19.963 0 006.002-2.981.076.076 0 00.032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 00-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/></svg>Discord</a>
+<a href="https://wa.me/50373298700" class="contact-btn btn-wa" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Contacto</a>
+</div>
+</div>
+</div>
+</section>
 
-      <a href="#download-cv" class="cv-btn" onclick="alert('CV próximamente disponible para descarga')">
-        <span>📄</span>
-        Descargar CV
-      </a>
-    </div>
+<section id="services" class="section">
+<div class="services-content">
+<h2 class="section-title">⚡ MIS SERVICIOS</h2>
+<div class="services-grid">
+<div class="service-card">
+<span class="service-icon">🎮</span>
+<h3 class="service-title">Gaming Coach</h3>
+<p class="service-desc">Coaching profesional en Free Fire, PUBG, Blood Strike y Apex Legends. Mejora tu gameplay con análisis detallado y estrategias personalizadas.</p>
+<ul class="service-list">
+<li>Análisis de partidas</li>
+<li>Estrategias competitivas</li>
+<li>Mejora de mecánicas</li>
+<li>Entrenamiento personalizado</li>
+</ul>
+</div>
+<div class="service-card">
+<span class="service-icon">🧠</span>
+<h3 class="service-title">Análisis Deportivo</h3>
+<p class="service-desc">Análisis profundo de rendimiento en esports. Estadísticas, patrones de juego y recomendaciones basadas en datos.</p>
+<ul class="service-list">
+<li>Análisis estadístico</li>
+<li>Identificación de patrones</li>
+<li>Reportes detallados</li>
+<li>Optimización de estrategias</li>
+</ul>
+</div>
+<div class="service-card">
+<span class="service-icon">💭</span>
+<h3 class="service-title">Psicología Deportiva</h3>
+<p class="service-desc">Apoyo psicológico para gamers competitivos. Manejo de presión, concentración y mentalidad ganadora en esports.</p>
+<ul class="service-list">
+<li>Manejo de presión competitiva</li>
+<li>Técnicas de concentración</li>
+<li>Mentalidad ganadora</li>
+<li>Control emocional en partidas</li>
+</ul>
+</div>
+<div class="service-card">
+<span class="service-icon">💻</span>
+<h3 class="service-title">Desarrollo Web</h3>
+<p class="service-desc">Creación de sitios web modernos, responsivos y optimizados. Desde landing pages hasta aplicaciones web completas.</p>
+<ul class="service-list">
+<li>Desarrollo Frontend</li>
+<li>Desarrollo Backend</li>
+<li>Diseño responsivo</li>
+<li>Optimización SEO</li>
+</ul>
+</div>
+<div class="service-card">
+<span class="service-icon">🤖</span>
+<h3 class="service-title">Automatización</h3>
+<p class="service-desc">Desarrollo de bots y scripts para automatizar tareas repetitivas. Ahorra tiempo y aumenta la eficiencia.</p>
+<ul class="service-list">
+<li>Bots personalizados</li>
+<li>Scripts de automatización</li>
+<li>Web scraping</li>
+<li>Procesos automatizados</li>
+</ul>
+</div>
+</div>
+<div class="contact-wrap" style="margin-top:3rem">
+<h2>📡 Canales de Contacto</h2>
+<div class="contact-row">
+<a href="https://instagram.com/mkoi.alex" class="contact-btn btn-ig" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram</a>
+<a href="https://tiktok.com/@alex__.zzz" class="contact-btn btn-tt" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>TikTok</a>
+<a href="https://discord.com/users/cortez_503" class="contact-btn btn-dc" target="_blank"><svg viewBox="0 0 24 24"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 00-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 00-5.487 0 12.36 12.36 0 00-.617-1.23A.077.077 0 008.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 00-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 00.031.055 20.03 20.03 0 005.993 2.98.078.078 0 00.084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 01-1.872-.878.075.075 0 01-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 01.078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 01.079.009c.12.098.245.195.372.288a.075.075 0 01-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 00-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 00.084.028 19.963 19.963 0 006.002-2.981.076.076 0 00.032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 00-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/></svg>Discord</a>
+<a href="https://wa.me/50373298700" class="contact-btn btn-wa" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Contacto</a>
+</div>
+</div>
+</div>
+</section>
 
-    <div class="contact-wrap">
-      <h2>📡 Canales de Contacto</h2>
-      <div class="contact-row">
-        <a href="https://instagram.com/mkoi.alex" class="contact-btn btn-ig" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          @mkoi.alex
-        </a>
-        <a href="https://tiktok.com/@alex__.zzz" class="contact-btn btn-tt" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
-          @alex__.zzz
-        </a>
-        <a href="https://discord.com/users/cortez_503" class="contact-btn btn-dc" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 00-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 00-5.487 0 12.36 12.36 0 00-.617-1.23A.077.077 0 008.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 00-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 00.031.055 20.03 20.03 0 005.993 2.98.078.078 0 00.084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 01-1.872-.878.075.075 0 01-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 01.078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 01.079.009c.12.098.245.195.372.288a.075.075 0 01-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 00-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 00.084.028 19.963 19.963 0 006.002-2.981.076.076 0 00.032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 00-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/></svg>
-          cortez_503
-        </a>
-        <a href="https://wa.me/50373298700" class="contact-btn btn-wa" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          +503 7329 8700
-        </a>
-      </div>
-    </div>
-  </section>
+<section id="training" class="section">
+<div class="in-training">
+<div class="training-content">
+<h2>📚 EN FORMACIÓN</h2>
+<div class="training-grid">
+<div class="training-item">
+<h3>🔒 Ciberseguridad</h3>
+<p>Hacking Ético, Pentesting, Red Team, Blue Team y seguridad ofensiva/defensiva</p>
+</div>
+<div class="training-item">
+<h3>📱 Desarrollo Móvil</h3>
+<p>Aplicaciones nativas e híbridas para iOS y Android</p>
+</div>
+<div class="training-item">
+<h3>☁️ Cloud Computing</h3>
+<p>AWS, Azure, Google Cloud Platform y arquitecturas en la nube</p>
+</div>
+<div class="training-item">
+<h3>🔄 DevOps</h3>
+<p>CI/CD, Docker, Kubernetes, automatización y gestión de infraestructura</p>
+</div>
+</div>
+</div>
+<div class="contact-wrap" style="margin-top:3rem">
+<h2>📡 Canales de Contacto</h2>
+<div class="contact-row">
+<a href="https://instagram.com/mkoi.alex" class="contact-btn btn-ig" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram</a>
+<a href="https://tiktok.com/@alex__.zzz" class="contact-btn btn-tt" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>TikTok</a>
+<a href="https://discord.com/users/cortez_503" class="contact-btn btn-dc" target="_blank"><svg viewBox="0 0 24 24"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 00-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 00-5.487 0 12.36 12.36 0 00-.617-1.23A.077.077 0 008.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 00-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 00.031.055 20.03 20.03 0 005.993 2.98.078.078 0 00.084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 01-1.872-.878.075.075 0 01-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 01.078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 01.079.009c.12.098.245.195.372.288a.075.075 0 01-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 00-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 00.084.028 19.963 19.963 0 006.002-2.981.076.076 0 00.032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 00-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/></svg>Discord</a>
+<a href="https://wa.me/50373298700" class="contact-btn btn-wa" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Contacto</a>
+</div>
+</div>
+</div>
+</section>
 
-  <section id="about" class="section">
-    <div class="about-content">
-      <div class="about-header">
-        <h1 class="about-name">WILLIAM ALEXIS GRANADOS CORTEZ</h1>
-        <p class="about-intro">
-          Estudiante de Platzi en Ciberseguridad, actualmente enfocado en Hacking Ético y Pentesting (Red Team). 
-          Apasionado de la programación, automatización, desarrollo web, ciencia de datos e inteligencia artificial. 
-          <strong>Tengo dos trastornos como lo son el TDAH y TLP</strong>, lo cual me ha dado una perspectiva única para enfrentar retos y desarrollar soluciones creativas.
-        </p>
-      </div>
-
-      <div class="info-grid">
-        <div class="info-card">
-          <h3>🎓 EDUCACIÓN</h3>
-          <ul>
-            <li><strong>Instituto Nacional de Santa Ana (I.N.S.A)</strong></li>
-            <li>Llegué hasta 2° de Ingeniería Electrónica</li>
-            <li>No me titulé, pero decidí aprender lo que me faltaba por mi cuenta</li>
-            <li>Actualmente sigo estudiando y certificándome en amplios temas tecnológicos</li>
-          </ul>
-        </div>
-
-        <div class="info-card">
-          <h3>💼 EXPERIENCIA</h3>
-          <ul>
-            <li>Moderación, automatización y programación para creador de contenido</li>
-            <li>Proyectos personales de programación</li>
-            <li>Proyectos de automatización y bots</li>
-            <li>Proyectos de ciencia de datos</li>
-            <li>Actualmente trabajando en múltiples proyectos (2026)</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="info-card">
-        <h3>🛠️ HABILIDADES TÉCNICAS</h3>
-        <div class="tech-grid">
-          <div class="tech-item">
-            <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
-            <div class="tech-name">HTML</div>
-          </div>
-          <div class="tech-item">
-            <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
-            <div class="tech-name">CSS</div>
-          </div>
-          <div class="tech-item">
-            <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
-            <div class="tech-name">Python</div>
-          </div>
-          <div class="tech-item">
-            <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
-            <div class="tech-name">JavaScript</div>
-          </div>
-          <div class="tech-item">
-            <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#">
-            <div class="tech-name">C# & .NET</div>
-          </div>
-          <div class="tech-item">
-            <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
-            <div class="tech-name">PHP</div>
-          </div>
-          <div class="tech-item">
-            <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg" alt="Go">
-            <div class="tech-name">Go</div>
-          </div>
-          <div class="tech-item">
-            <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-plain.svg" alt="Rust">
-            <div class="tech-name">Rust</div>
-          </div>
-          <div class="tech-item">
-            <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg" alt="Swift">
-            <div class="tech-name">Swift</div>
-          </div>
-          <div class="tech-item">
-            <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin">
-            <div class="tech-name">Kotlin</div>
-          </div>
-          <div class="tech-item">
-            <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">
-            <div class="tech-name">C</div>
-          </div>
-          <div class="tech-item">
-            <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
-            <div class="tech-name">C++</div>
-          </div>
-          <div class="tech-item">
-            <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript">
-            <div class="tech-name">TypeScript</div>
-          </div>
-          <div class="tech-item">
-            <img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
-            <div class="tech-name">Java</div>
-          </div>
-        </div>
-
-        <div class="in-training">
-          <span>📚</span>
-          <span>En formación: Ciberseguridad, Desarrollo Móvil, Cloud Computing & DevOps</span>
-        </div>
-      </div>
-
-      <div class="contact-wrap" style="margin-top:3rem;">
-        <h2>📡 Canales de Contacto</h2>
-        <div class="contact-row">
-          <a href="https://instagram.com/mkoi.alex" class="contact-btn btn-ig" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            @mkoi.alex
-          </a>
-          <a href="https://tiktok.com/@alex__.zzz" class="contact-btn btn-tt" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
-            @alex__.zzz
-          </a>
-          <a href="https://discord.com/users/cortez_503" class="contact-btn btn-dc" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 00-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 00-5.487 0 12.36 12.36 0 00-.617-1.23A.077.077 0 008.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 00-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 00.031.055 20.03 20.03 0 005.993 2.98.078.078 0 00.084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 01-1.872-.878.075.075 0 01-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 01.078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 01.079.009c.12.098.245.195.372.288a.075.075 0 01-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 00-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 00.084.028 19.963 19.963 0 006.002-2.981.076.076 0 00.032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 00-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/></svg>
-            cortez_503
-          </a>
-          <a href="https://wa.me/50373298700" class="contact-btn btn-wa" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            +503 7329 8700
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects" class="section">
-    <div class="projects-content">
-      <h2 class="section-title">💼 MIS PROYECTOS</h2>
-      
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-media">
-            <div class="project-placeholder">🤖</div>
-          </div>
-          <div class="project-info">
-            <h3 class="project-title">Bot de Automatización</h3>
-            <p class="project-desc">
-              Bot inteligente para automatización de tareas. Próximamente añadiré capturas y video demostrativo del funcionamiento.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">Python</span>
-              <span class="project-tag">Automatización</span>
-              <span class="project-tag">Bot</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-media">
-            <div class="project-placeholder">📊</div>
-          </div>
-          <div class="project-info">
-            <h3 class="project-title">Análisis de Datos</h3>
-            <p class="project-desc">
-              Proyecto de ciencia de datos y visualización. Más detalles y capturas próximamente.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">Python</span>
-              <span class="project-tag">Data Science</span>
-              <span class="project-tag">ML</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card" style="border-style:dashed;border-color:rgba(0,245,255,.2);background:transparent;">
-          <div class="project-media" style="background:rgba(0,245,255,.02);">
-            <div class="project-placeholder" style="font-size:4rem;">➕</div>
-          </div>
-          <div class="project-info" style="text-align:center;">
-            <h3 class="project-title">Próximamente</h3>
-            <p class="project-desc" style="font-style:italic;opacity:.7;">
-              Más proyectos en camino. Subiré videos y capturas de todos mis trabajos.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="contact-wrap" style="margin-top:3rem;">
-        <h2>📡 Canales de Contacto</h2>
-        <div class="contact-row">
-          <a href="https://instagram.com/mkoi.alex" class="contact-btn btn-ig" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            @mkoi.alex
-          </a>
-          <a href="https://tiktok.com/@alex__.zzz" class="contact-btn btn-tt" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
-            @alex__.zzz
-          </a>
-          <a href="https://discord.com/users/cortez_503" class="contact-btn btn-dc" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 00-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 00-5.487 0 12.36 12.36 0 00-.617-1.23A.077.077 0 008.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 00-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 00.031.055 20.03 20.03 0 005.993 2.98.078.078 0 00.084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 01-1.872-.878.075.075 0 01-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 01.078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 01.079.009c.12.098.245.195.372.288a.075.075 0 01-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 00-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 00.084.028 19.963 19.963 0 006.002-2.981.076.076 0 00.032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 00-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/></svg>
-            cortez_503
-          </a>
-          <a href="https://wa.me/50373298700" class="contact-btn btn-wa" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            +503 7329 8700
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="services" class="section">
-    <div class="services-content">
-      <h2 class="section-title">⚡ MIS SERVICIOS</h2>
-      
-      <div class="services-grid">
-        <div class="service-card">
-          <span class="service-icon">🎮</span>
-          <h3 class="service-title">Gaming Coach</h3>
-          <p class="service-desc">
-            Coaching profesional en Free Fire, PUBG, Blood Strike y Apex Legends. Mejora tu gameplay con análisis detallado y estrategias personalizadas.
-          </p>
-          <ul class="service-list">
-            <li>Análisis de partidas</li>
-            <li>Estrategias competitivas</li>
-            <li>Mejora de mecánicas</li>
-            <li>Entrenamiento personalizado</li>
-          </ul>
-        </div>
-
-        <div class="service-card">
-          <span class="service-icon">🧠</span>
-          <h3 class="service-title">Análisis Deportivo</h3>
-          <p class="service-desc">
-            Análisis profundo de rendimiento en esports. Estadísticas, patrones de juego y recomendaciones basadas en datos.
-          </p>
-          <ul class="service-list">
-            <li>Análisis estadístico</li>
-            <li>Identificación de patrones</li>
-            <li>Reportes detallados</li>
-            <li>Optimización de estrategias</li>
-          </ul>
-        </div>
-
-        <div class="service-card">
-          <span class="service-icon">💭</span>
-          <h3 class="service-title">Psicología Deportiva</h3>
-          <p class="service-desc">
-            Apoyo psicológico para gamers competitivos. Manejo de presión, concentración y mentalidad ganadora en esports.
-          </p>
-          <ul class="service-list">
-            <li>Manejo de presión competitiva</li>
-            <li>Técnicas de concentración</li>
-            <li>Mentalidad ganadora</li>
-            <li>Control emocional en partidas</li>
-          </ul>
-        </div>
-
-        <div class="service-card">
-          <span class="service-icon">💻</span>
-          <h3 class="service-title">Desarrollo Web</h3>
-          <p class="service-desc">
-            Creación de sitios web modernos, responsivos y optimizados. Desde landing pages hasta aplicaciones web completas.
-          </p>
-          <ul class="service-list">
-            <li>Desarrollo Frontend</li>
-            <li>Desarrollo Backend</li>
-            <li>Diseño responsivo</li>
-            <li>Optimización SEO</li>
-          </ul>
-        </div>
-
-        <div class="service-card">
-          <span class="service-icon">🤖</span>
-          <h3 class="service-title">Automatización</h3>
-          <p class="service-desc">
-            Desarrollo de bots y scripts para automatizar tareas repetitivas. Ahorra tiempo y aumenta la eficiencia.
-          </p>
-          <ul class="service-list">
-            <li>Bots personalizados</li>
-            <li>Scripts de automatización</li>
-            <li>Web scraping</li>
-            <li>Procesos automatizados</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="contact-wrap" style="margin-top:3rem;">
-        <h2>📡 Canales de Contacto</h2>
-        <div class="contact-row">
-          <a href="https://instagram.com/mkoi.alex" class="contact-btn btn-ig" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            @mkoi.alex
-          </a>
-          <a href="https://tiktok.com/@alex__.zzz" class="contact-btn btn-tt" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
-            @alex__.zzz
-          </a>
-          <a href="https://discord.com/users/cortez_503" class="contact-btn btn-dc" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 00-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 00-5.487 0 12.36 12.36 0 00-.617-1.23A.077.077 0 008.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 00-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 00.031.055 20.03 20.03 0 005.993 2.98.078.078 0 00.084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 01-1.872-.878.075.075 0 01-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 01.078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 01.079.009c.12.098.245.195.372.288a.075.075 0 01-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 00-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 00.084.028 19.963 19.963 0 006.002-2.981.076.076 0 00.032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 00-.031-.028zM8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38 0-1.312.956-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.956 2.38-2.157 2.38zm7.975 0c-1.183 0-2.157-1.069-2.157-2.38 0-1.312.955-2.38 2.157-2.38 1.21 0 2.176 1.077 2.157 2.38 0 1.312-.946 2.38-2.157 2.38z"/></svg>
-            cortez_503
-          </a>
-          <a href="https://wa.me/50373298700" class="contact-btn btn-wa" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            +503 7329 8700
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <p>[ ALEXIS &bull; FULL STACK DEVELOPER &bull; 2026 ]</p>
-  </footer>
+<footer class="footer"><p>[ ALEXIS &bull; FULL STACK DEVELOPER &bull; 2026 ]</p></footer>
 </div>
 
 <script>
-function showSection(sectionId, linkElement) {
-  document.querySelectorAll('.section').forEach(section => {
-    section.classList.remove('active');
-  });
-  
-  document.getElementById(sectionId).classList.add('active');
-  
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.classList.remove('active');
-  });
-  linkElement.classList.add('active');
-  
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-const roles = [
-  'Desarrollador Web Full Stack',
-  'Ingeniero en Electrónica',
-  'Ingeniero Backend',
-  'Automation Developer',
-  'AI & Data Science Specialist',
-  'Gaming Coach & Analista',
-  'Psicólogo Deportivo (Esports)'
-];
-
-let currentRoleIndex = 0;
-const roleElement = document.getElementById('rotating-role');
-
-function rotateRole() {
-  roleElement.style.opacity = '0';
-  
-  setTimeout(() => {
-    currentRoleIndex = (currentRoleIndex + 1) % roles.length;
-    roleElement.textContent = roles[currentRoleIndex];
-    roleElement.style.opacity = '1';
-  }, 500);
-}
-
-roleElement.textContent = roles[0];
-roleElement.style.transition = 'opacity 0.5s ease';
-setInterval(rotateRole, 3000);
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    const homeLink = document.querySelector('.nav-link[href="#inicio"]');
-    showSection('inicio', homeLink);
-  }
-});
-
-console.log('%c╔═══════════════════════════════════════════╗', 'color: #00f5ff; font-weight: bold;');
-console.log('%c║   ALEXIS - Full Stack Developer          ║', 'color: #00f5ff; font-weight: bold;');
-console.log('%c║   Portfolio v2.0                          ║', 'color: #00f5ff; font-weight: bold;');
-console.log('%c║   © 2026 - Todos los derechos reservados ║', 'color: #00f5ff; font-weight: bold;');
-console.log('%c╚═══════════════════════════════════════════╝', 'color: #00f5ff; font-weight: bold;');
-console.log('%c\n🚀 ¿Interesado en mi trabajo? Contáctame:\n📧 Instagram: @mkoi.alex\n💬 Discord: cortez_503\n📱 WhatsApp: +503 7329 8700', 'color: #6366f1; font-size: 12px;');
+function showSection(id,el){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));el.classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+const roles=['Desarrollador Web Full Stack','Ingeniero en Electrónica','Ingeniero Backend','Automation Developer','AI & Data Science Specialist','Gaming Coach & Analista','Psicólogo Deportivo (Esports)'];let i=0;const r=document.getElementById('rotating-role');function rot(){r.style.opacity='0';setTimeout(()=>{i=(i+1)%roles.length;r.textContent=roles[i];r.style.opacity='1'},500)}r.textContent=roles[0];setInterval(rot,3000);
+console.log('%c🔥 ALEXIS - Full Stack Developer','color:#dc2626;font:bold 16px/1.5 Cinzel');console.log('%cPortfolio v2.0 Dark Fantasy | © 2026','color:#d97706;font:12px monospace');console.log('%c\n📧 Instagram: @mkoi.alex\n💬 Discord: cortez_503\n📱 WhatsApp: +503 7329 8700','color:#f8fafc;font:12px monospace');
 </script>
-
 </body>
 </html>
